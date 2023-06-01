@@ -10,13 +10,13 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     - uses: ilammy/msvc-dev-cmd@v1
     - name: build
-      run: cl /EHsc main.cpp
+      run: gcc main.cpp -o main
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
