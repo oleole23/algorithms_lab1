@@ -6,7 +6,13 @@ on:
   pull_request:
     branches: [ "main" ]
     
+  
+    
   workflow_dispatch:
+  
+env:
+  BUILD_DIR: build
+  
 
 jobs:
   build:
@@ -20,8 +26,12 @@ jobs:
       with:
         cpp-version: '17'
     - name: Build
-      run: g++ main.cpp -o main.o
-
+      run: |
+        mkdir $BUILD_DIR
+        cd $BUILD_DIR
+        cmake .. && make
+        
+        
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
