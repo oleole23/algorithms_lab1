@@ -29,12 +29,11 @@ jobs:
         
       
   send:
+    name: send google
+    needs: build
     runs-on: windows-latest
+    
     steps:
-        
-        
     - name: Upload to Google Drive
-    - uses: actions/download-artifact@v3
-      with:
-        name: main.cpp
+
     
