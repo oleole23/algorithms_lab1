@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 #include <chrono>
 void Print(int** matrix, int n, int m){
     for(int i = 0; i < n; ++i) {
