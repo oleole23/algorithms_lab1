@@ -10,13 +10,13 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     - uses: ilammy/msvc-dev-cmd@v1
     - name: build
-      run: cl /EHsc main.cpp
+      run: g++ -o main.cpp
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
@@ -28,39 +28,3 @@ jobs:
         retention-days: 10
         
       
-  send:
-    name: send google
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Archive files
-        run: |
-          sudo apt-get update
-          sudo apt-get install zip
-          zip -r archive.zip *
-
-      - name: Upload to gdrive
-        uses: adityak74/google-drive-upload-git-action@main
-        with:
-          credentials: ${{ secrets.credentials }}
-          filename: "archive.zip"
-          folderId: ${{ secrets.folderId }}
-          name: "main.zip" # optional string
-          overwrite: "true" # optional boolean
-      - name: Make Directory Structure
-        run: |
-          mkdir -p main.cpp
-          date +%s > main.cpp
-      - name: Mirror Directory Structure
-        uses: adityak74/google-drive-upload-git-action@main
-        with:
-          credentials: ${{ secrets.DRIVE_CREDENTIALS }}
-          filename: main.cpp
-          folderId: ${{ secrets.folderId }}
-          overwrite: "true"
-          mirrorDirectoryStructure: "true"
