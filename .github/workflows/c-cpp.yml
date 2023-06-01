@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: ilammy/msvc-dev-cmd@v1
     - name: build
-      run: g++ main.cpp -o main.o
+      run: g++ main.cpp -o
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
