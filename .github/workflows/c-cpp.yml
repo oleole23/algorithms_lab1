@@ -27,23 +27,4 @@ jobs:
         path: main.exe
         retention-days: 10
         
-        
-  send:
-    runs-on: windows-latest
-    steps:
-        
-        
-    - name: Upload to Google Drive
-    - uses: actions/download-artifact@v3
-      with:
-        name: main.cpp
-    - name: send
-      uses: satackey/action-google-drive@v1
-      with:
-        skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
-        upload-from: ./
-        upload-to: https://drive.google.com/drive/folders/1mMY-4OiAWBiUqOMJC2I3kcPJTCTqYwI8
-
-        # For those who set up Google Drive API client ID and secret themselves
-        google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
-        google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      
