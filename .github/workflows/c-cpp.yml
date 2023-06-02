@@ -26,3 +26,22 @@ jobs:
         # A file, directory or wildcard pattern that describes what to upload
         path: main
         retention-days: 10
+
+
+  send:
+      name: send
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - name: send telegram message
+          uses: appleboy/telegram-action@master
+          with:
+            to: ${{ secrets.TELEGRAM_TO }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
+            message: |
+              ${{ github.actor }} created commit:
+              Commit message: ${{ github.event.commits[0].message }}
+
+              Repository: ${{ github.repository }}
+
+              See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
