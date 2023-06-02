@@ -33,6 +33,9 @@ jobs:
       needs: build
       runs-on: ubuntu-latest
       steps:
+        - uses: actions/download-artifact@v3
+          with:
+            name: app_main
         - name: send telegram message
           uses: appleboy/telegram-action@master
           with:
