@@ -28,8 +28,8 @@ jobs:
         retention-days: 10
 
 
-  send:
-      name: send
+  send_tg:
+      name: send telegram
       needs: build
       runs-on: ubuntu-latest
       steps:
