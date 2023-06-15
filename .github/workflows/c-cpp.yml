@@ -19,7 +19,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y libstdc++6 librust-libm-dev
     - uses: ilammy/msvc-dev-cmd@v1
     - name: build
-      run: g++ main.cpp -o main.exe
+      run: g++ main.cpp -o main
 
 
 
@@ -32,7 +32,7 @@ jobs:
         # Artifact name
         name: app_main
         # A file, directory or wildcard pattern that describes what to upload
-        path: main.exe
+        path: main
         retention-days: 10
 
 
