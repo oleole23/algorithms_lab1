@@ -17,8 +17,10 @@ jobs:
     
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get install -y libstdc++6 librust-libm-dev
-    - name: build
-      run: g++ hello.cpp -o main.o
+    - name: configure
+      run: ./configure
+    - name: make
+      run: make
 
 
 
