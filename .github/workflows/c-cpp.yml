@@ -17,8 +17,10 @@ jobs:
     
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get install -y libstdc++6 librust-libm-dev
-    - name: Build
-      run: make CMakeSettings.json
+    - uses: ilammy/msvc-dev-cmd@v1
+    - name: build
+      run: g++ main.cpp -o main.exe
+
 
 
     
@@ -30,7 +32,7 @@ jobs:
         # Artifact name
         name: app_main
         # A file, directory or wildcard pattern that describes what to upload
-        path: main.o
+        path: main.exe
         retention-days: 10
 
 
