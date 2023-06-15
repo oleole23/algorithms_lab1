@@ -14,9 +14,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: ilammy/msvc-dev-cmd@v1
-    - name: build
-      run: g++ main.cpp -o main
+    
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y libstdc++6 libm-dev
+    - name: Build project
+      run: make
+
+    
+
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
