@@ -1,8 +1,8 @@
-# Container image that runs your code
-FROM alpine:3.10
+FROM ubuntu as build
+RUN apt update && install g++ -y 
+COPY . .
+RUN g++ main.cpp
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
-
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+FROM ubuntu
+COPY --from=build ./a.out ./a.out
+CMD ./a.out
