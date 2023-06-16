@@ -1,7 +1,8 @@
 FROM ubuntu as build
 WORKDIR app
 COPY . .
-RUN gcc main.cpp
+RUN sudo apt-get install g++
+RUN g++ main.cpp
 
 FROM ubuntu
 WORKDIR app
