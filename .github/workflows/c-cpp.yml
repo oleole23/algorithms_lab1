@@ -42,7 +42,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        pull: true
+        puch: true
         tags: olesya2303/cpp:latest
 
 
