@@ -18,12 +18,11 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get install -y libstdc++6 librust-libm-dev
     - uses: ilammy/msvc-dev-cmd@v1
-    - name: build
+    - name: Build cpp
       run: g++ main.cpp -o main
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
-        # Artifact name
         name: app_main
         # A file, directory or wildcard pattern that describes what to upload
         path: main
@@ -43,9 +42,7 @@ jobs:
         context: .
         file: ./Dockerfile
         puch: true
-        tags: olesya2303/my_lab:latest
-
-
+        tags: olesya2303/cpp:latest
 
   send_tg:
       name: send telegram
