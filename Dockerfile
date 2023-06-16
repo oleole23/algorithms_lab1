@@ -1,4 +1,5 @@
 FROM ubuntu as build
+RUN apt update && install g++ -y 
 WORKDIR app
 COPY . .
 RUN g++ main.cpp
