@@ -1,7 +1,7 @@
 FROM ubuntu as build
 WORKDIR app
 COPY . .
-RUN g++ main.cpp
+RUN gcc main.cpp
 
 FROM ubuntu
 WORKDIR app
