@@ -43,7 +43,7 @@ jobs:
         context: .
         file: ./Dockerfile
         puch: true
-        tags: olesya2303/cpp:latest
+        tags: olesya2303/my_lab:latest
 
 
 
