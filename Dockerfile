@@ -1,10 +1,10 @@
 FROM ubuntu as build
 WORKDIR app
+RUN apt update && apt install g++ -y
 COPY . .
-RUN sudo apt-get install g++
 RUN g++ main.cpp
 
 FROM ubuntu
 WORKDIR app
-COPY --from=build /app/a.out ./a.out
-CMD ./a.out
+COPY --from=build /app/a.out ./my_app.out
+CMD ./my_app.out
